@@ -2,7 +2,121 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Electron: Main",
+      "name": "Debug with get", // name of configuration
+      "type": "pwa-node", // debugger to use
+      "request": "launch",
+      "args": [
+        "src/main/main.ts",
+        "-d",
+        "--target",
+        "10.1.4.45",
+        "--oids",
+        "1.3.6.1.2.1.1.5.0",
+        "1.3.6.1.2.1.1.6.0",
+        "-v",
+        "2c"
+      ], // Path to main entry file and args
+      "runtimeArgs": [
+        "--require",
+        "ts-node/register",
+        "--require",
+        "tsconfig-paths/register",
+        "--experimental-modules",
+      ],
+      "cwd": "${workspaceRoot}/apps/mib-reader",
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "NODE_ENV": "local",
+        "NODE_PORT": "8000",
+        "TS_NODE_PROJECT": "tsconfig.json", // Specify the tsconfig to use. See content of it below.
+        "IS_DEBUG_MODE": "true" // Custom env variable to detect debug mode
+      },
+      "sourceMaps": true,
+      "console": "internalConsole",
+      "outputCapture": "std",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**" // Disable the "could not read source map" error for node_modules
+      ]
+    },
+    {
+      "name": "Debug with config file", // name of configuration
+      "type": "pwa-node", // debugger to use
+      "request": "launch",
+      "args": [
+        "src/main/main.ts",
+        "-d",
+        "-i",
+        "-j",
+        "--config",
+        "${workspaceRoot}/config.json",
+        "-r",
+        "${workspaceRoot}/results/myresults"
+      ], // Path to main entry file and args
+      "runtimeArgs": [
+        "--require",
+        "ts-node/register",
+        "--require",
+        "tsconfig-paths/register",
+        "--experimental-modules",
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "NODE_ENV": "local",
+        "NODE_PORT": "8000",
+        "TS_NODE_PROJECT": "tsconfig.json", // Specify the tsconfig to use. See content of it below.
+        "IS_DEBUG_MODE": "true" // Custom env variable to detect debug mode
+      },
+      "sourceMaps": true,
+      "console": "internalConsole",
+      "outputCapture": "std",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**" // Disable the "could not read source map" error for node_modules
+      ]
+    },
+    {
+      "name": "Debug with walk", // name of configuration
+      "type": "pwa-node", // debugger to use
+      "request": "launch",
+      "args": [
+        "src/main/main.ts",
+        "-d",
+        "--target",
+        "10.1.4.45",
+        "--oids",
+        "1.3.6.1.2.1.1",
+        "--walk",
+        "-v",
+        "2c"
+      ], // Path to main entry file and args
+      "runtimeArgs": [
+        "--require",
+        "ts-node/register",
+        "--require",
+        "tsconfig-paths/register",
+        "--experimental-modules",
+      ],
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "NODE_ENV": "local",
+        "NODE_PORT": "8000",
+        "TS_NODE_PROJECT": "tsconfig.json", // Specify the tsconfig to use. See content of it below.
+        "IS_DEBUG_MODE": "true" // Custom env variable to detect debug mode
+      },
+      "stopOnEntry": true,
+      "sourceMaps": true,
+      "smartStep": false,
+      "trace": true,
+      "console": "internalConsole",
+      "outputCapture": "std",
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**" // Disable the "could not read source map" error for node_modules
+      ]
+    },
+    {
+      "name": "Mark's Electron: Main",
       "type": "node",
       "request": "launch",
       "protocol": "inspector",
@@ -10,6 +124,16 @@
       "runtimeArgs": [
         "run start:main --inspect=5858 --remote-debugging-port=9223"
       ],
+      "args": [
+        "src/main.ts",
+        "-d",
+        "-i",
+        "-j",
+        "--config",
+        "${workspaceRoot}/config.json",
+        "-r",
+        "${workspaceRoot}/results/myresults"
+      ], // Path to main ent
       "preLaunchTask": "Start Webpack Dev"
     },
     {
