@@ -36,8 +36,7 @@ export default class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
-
-const isDevelopment =
+let isDevelopment =
   process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
 
 const installExtensions = async () => {
@@ -120,12 +119,27 @@ const setupGUI = () => {
   }
 
   if (isDevelopment) {
-    // require('electron-debug')();
+    require('electron-debug')();
   }
 
   /**
    * Add event listeners...
    */
+
+  // Emitted before the application starts closing its windows
+  app.on('before-quit', () => {
+    console.log('app: before quit');
+  });
+
+  // Emitted when all windows have been closed and the application will quit.
+  app.on('will-quit', () => {
+    console.log('app: will quit');
+  });
+
+  // Emitted when the application is quitting.
+  app.on('quit', () => {
+    console.log('app: quit');
+  });
 
   app.on('window-all-closed', () => {
     // Respect the OSX convention of having the application in memory even
@@ -203,7 +217,7 @@ class MIBReaderConfig {
     this.trapPort = 162;
     this.targets = [];
     this.oids = [];
-    this.debug = process.env.IS_DEBUG_MODE === 'true';
+    this.debug = isDevelopment;
     this.debug = true;
     this.walk = false;
     this.maxRepetitions = 20;
@@ -257,6 +271,8 @@ class MIBReader {
     this.results = [];
 
     this.processCommandLine(argv);
+
+    if (this.debug) isDevelopment = true;
 
     if (!this.config.json)
       this.results.push('<?xml version="1.0" encoding="UTF-8"?>', '<results>');
@@ -488,7 +504,7 @@ class MIBReader {
   }
 }
 
-debugger; // eslint-disable-line no-debugger
+// debugger; // eslint-disable-line no-debugger
 
 const mibReader = new MIBReader(process.argv);
 

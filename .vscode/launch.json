@@ -14,15 +14,18 @@
       "type": "pwa-node"
     },
     {
-      "name": "Electron Main",
+      "name": "Electron: Main",
       "type": "pwa-node",
       "trace": true,
       "stopOnEntry": true,
       "sourceMaps": true,
+      "console": "integratedTerminal",
       "smartStep": false,
       "request": "launch",
       "attachSimplePort": 0,
-      "env": { "NODE_ENV": "development" },
+      "env": {
+        "NODE_ENV": "development"
+      },
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "runtimeArgs": [
         // "--inspect-brk=5858",
@@ -39,11 +42,21 @@
         "--config",
         "config.json",
         "--results",
-        "results/myresults"
+        "results/myresults",
+        "--gui"
       ],
       "skipFiles": [
         // "<node_internals>/**"
       ],
+    },
+    {
+      "name": "Attach",
+      "port": 5858,
+      "request": "attach",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "pwa-node"
     },
     {
       "type": "pwa-node",
@@ -56,6 +69,29 @@
       "preLaunchTask": "tsc: build - tsconfig.json",
       "outFiles": [
         "${workspaceFolder}/release/app/dist/**/*.js"
+      ]
+    },
+    {
+      "name": "Electron: Renderer",
+      "type": "chrome",
+      "request": "launch",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+      },
+      "runtimeArgs": [
+        "${workspaceRoot}/main.js",
+        "--remote-debugging-port=9222"
+      ],
+      "webRoot": "${workspaceRoot}"
+    },
+  ],
+  "compounds": [
+    {
+      "name": "Electron: All",
+      "configurations": [
+        "Electron: Main",
+        "Electron: Renderer"
       ]
     }
   ]
