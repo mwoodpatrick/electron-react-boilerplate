@@ -5,15 +5,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach",
-      "port": 5858,
-      "request": "attach",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "type": "pwa-node"
-    },
-    {
       "name": "Electron Main",
       "type": "pwa-node",
       "trace": true,
@@ -21,11 +12,10 @@
       "sourceMaps": true,
       "smartStep": false,
       "request": "launch",
-      "attachSimplePort": 0,
       "env": { "NODE_ENV": "development" },
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "runtimeArgs": [
-        // "--inspect-brk=5858",
+        "--inspect-brk=5858",
         "--preserve-symlinks",
         "--preserve-symlinks-main",
         "-r",

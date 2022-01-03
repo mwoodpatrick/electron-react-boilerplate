@@ -120,7 +120,7 @@ const setupGUI = () => {
   }
 
   if (isDevelopment) {
-    require('electron-debug')();
+    // require('electron-debug')();
   }
 
   /**
@@ -249,7 +249,7 @@ class MIBReader {
   store: any;
 
   constructor(argv: string[]) {
-    console.log('** starting app **')
+    console.log('** starting app **');
     this.appVersion = '0.0.1';
     this.config = new MIBReaderConfig();
     this.entryMap = [];
@@ -313,6 +313,7 @@ class MIBReader {
     }
 
     const program = new Command('mib-reader')
+      .allowUnknownOption()
       .option('-c, --community <name>', 'community', this.config.community)
       .option('-d, --debug', 'output extra debugging', this.config.debug)
       .option('-f, --config <path>', 'specify config file')
