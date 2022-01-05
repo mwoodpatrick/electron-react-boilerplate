@@ -9,7 +9,7 @@ const Hello = () => {
       <div className="Hello">
         <img src={logo} alt="Park of the Sierras" />
       </div>
-      <h1>MIB Reader</h1>
+      <h1>MIB Browser</h1>
       <div className="Hello"> </div>
       <h2>GUI Coming Soon!</h2>
     </div>

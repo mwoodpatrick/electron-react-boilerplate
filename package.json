@@ -7,7 +7,8 @@
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
     "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
     "lint": "cross-env NODE_ENV=development eslint . --ext .js,.jsx,.ts,.tsx",
-    "package": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish never",
+    "copymibs": "copyfiles -fE node_modules/net-snmp/lib/mibs/* release/app/dist/main/lib/mibs",
+    "package": "ts-node ./.erb/scripts/clean.js dist && npm run copymibs && npm run build && electron-builder build --publish never",
     "postinstall": "ts-node .erb/scripts/check-native-dep.js && electron-builder install-app-deps && cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.ts && opencollective-postinstall",
     "debug:main": "cross-env NODE_ENV=development electron -r ts-node/register/transpile-only ./src/main/main.ts --inspect-brk=5858 --remote-debugging-port=9223 -d -i --config config.json -r results/myresults --gui",
     "start": "ts-node ./.erb/scripts/check-port-in-use.js && npm run start:renderer",
@@ -31,8 +32,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.erb.ElectronReact",
+    "productName": "MIBBrowser",
+    "appId": "org.parkofthesierras.MIBBrowser",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -90,7 +91,7 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
+      "owner": "park-of-the-sierras",
       "repo": "electron-react-boilerplate"
     }
   },
@@ -176,6 +177,7 @@
     "browserslist-config-erb": "^0.0.3",
     "chalk": "^4.1.2",
     "concurrently": "^6.5.1",
+    "copyfiles": "^2.4.1",
     "core-js": "^3.20.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
