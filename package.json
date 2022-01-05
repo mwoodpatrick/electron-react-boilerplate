@@ -1,6 +1,7 @@
 {
-  "name": "electron-react-boilerplate",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Fast Refresh for rapid application development",
+  "name": "mib-browser",
+  "version": "0.0.1",
+  "description": "A simple viewer to query SNMP information",
   "scripts": {
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
@@ -15,7 +16,8 @@
     "start:main": "cross-env NODE_ENV=development electron -r ts-node/register/transpile-only ./src/main/main.ts -d -i --config config.json -r results/myresults --gui",
     "start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "publish": "electron-builder -mwl --publish always"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -32,8 +34,8 @@
     ]
   },
   "build": {
-    "productName": "MIBBrowser",
-    "appId": "org.parkofthesierras.MIBBrowser",
+    "productName": "mib-browser",
+    "appId": "org.parkofthesierras.mib-browser",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -92,33 +94,23 @@
     "publish": {
       "provider": "github",
       "owner": "park-of-the-sierras",
-      "repo": "electron-react-boilerplate"
+      "repo": "mib-browser"
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron-react-boilerplate/electron-react-boilerplate.git"
+    "url": "git+https://github.com/mwoodpatrick/mib-browser"
   },
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://electron-react-boilerplate.js.org"
+    "name": "Mark L. Wood-Patrick",
+    "email": "mwoodpatrick@gmail.com",
+    "url": "https://github.com/mwoodpatrick"
   },
   "contributors": [
-    {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
-    },
-    {
-      "name": "John Tran",
-      "email": "jptran318@gmail.com",
-      "url": "https://github.com/jooohhn"
-    }
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"
+    "url": "https://github.com/mwoodpatrick/mib-browser/issues"
   },
   "keywords": [
     "electron",
@@ -129,7 +121,8 @@
     "sass",
     "webpack",
     "hot",
-    "reload"
+    "reload",
+    "snmp"
   ],
   "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
   "jest": {
