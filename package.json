@@ -124,7 +124,7 @@
     "reload",
     "snmp"
   ],
-  "homepage": "https://github.com/electron-react-boilerplate/electron-react-boilerplate#readme",
+  "homepage": "https://www.parkofthesierras.org/",
   "jest": {
     "testURL": "http://localhost/",
     "testEnvironment": "jsdom",
@@ -239,7 +239,7 @@
     "npm": ">=7.x"
   },
   "collective": {
-    "url": "https://opencollective.com/electron-react-boilerplate-594"
+    "url": "https://www.parkofthesierras.org/"
   },
   "browserslist": [],
   "prettier": {
