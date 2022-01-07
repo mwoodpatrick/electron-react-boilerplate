@@ -106,8 +106,7 @@
     "email": "mwoodpatrick@gmail.com",
     "url": "https://github.com/mwoodpatrick"
   },
-  "contributors": [
-  ],
+  "contributors": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mwoodpatrick/mib-browser/issues"
@@ -223,10 +222,12 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "commander": "^8.3.0",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.4",
     "electron-updater": "^4.6.4",
     "history": "^5.2.0",
+    "jshint": "^2.13.3",
     "net-snmp": "^3.5.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
