@@ -39,3 +39,18 @@ Ditto but enable the GUI (does not do much right now)
 Get details on command line optiuons:
 
 > mib-browser.exe -d -h
+
+# Sample Config file
+
+```
+{
+  "version": "2c",
+  "walk": false,
+  "community": "public",
+  "targets": ["10.1.4.45", "10.1.4.46"],
+  "oids": [
+    "1.3.6.1.2.1.1.5.0",
+    "1.3.6.1.2.1.1.6.0"
+  ]
+}
+```
