@@ -263,7 +263,7 @@ class MIBReader {
   store: any;
 
   constructor(argv: string[]) {
-    console.log('** starting app **');
+    // console.log('** starting app **');
     this.appVersion = '0.0.1';
     this.config = new MIBReaderConfig();
     this.entryMap = [];
@@ -318,7 +318,7 @@ class MIBReader {
 
   processCommandLine(argv: string[]) {
     for (let j = 2; j < argv.length; j += 1) {
-      this.debug(`${j} -> ${argv[j]}`);
+      // this.debug(`${j} -> ${argv[j]}`);
       if (argv[j] === '-f' || argv[j] === '--config') {
         this.parseJSON(
           readFileSync(argv[j + 1], { encoding: 'utf-8' }),
@@ -328,7 +328,7 @@ class MIBReader {
       }
     }
 
-    const program = new Command('mib-reader')
+    const program = new Command('mib-browser')
       .allowUnknownOption()
       .option('-c, --community <name>', 'community', this.config.community)
       .option('-d, --debug', 'output extra debugging', this.config.debug)
