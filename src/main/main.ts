@@ -218,7 +218,7 @@ class MIBReaderConfig {
     this.targets = [];
     this.oids = [];
     this.debug = isDevelopment;
-    this.debug = true;
+    // this.debug = true;
     this.walk = false;
     this.maxRepetitions = 20;
     this.retries = 10;

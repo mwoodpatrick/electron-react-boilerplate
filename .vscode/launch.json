@@ -50,6 +50,36 @@
       ],
     },
     {
+      "name": "Electron: Help",
+      "type": "pwa-node",
+      "trace": true,
+      "stopOnEntry": true,
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "smartStep": false,
+      "request": "launch",
+      "attachSimplePort": 0,
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+      "runtimeArgs": [
+        // "--inspect-brk=5858",
+        "--preserve-symlinks",
+        "--preserve-symlinks-main",
+        "-r",
+        "ts-node/register/transpile-only",
+        "--remote-debugging-port=9223"
+      ],
+      "program": "${workspaceFolder}/src/main/main.ts",
+      "args": [
+        "-h",
+      ],
+      "skipFiles": [
+        // "<node_internals>/**"
+      ],
+    },
+    {
       "name": "Attach",
       "port": 5858,
       "request": "attach",
