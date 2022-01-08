@@ -30,12 +30,12 @@ Examples:
 
 Gather some data based on the config file and generate results
 
-mib-browser.exe -d -i --config config.json -r results/myresults
+> mib-browser.exe -d -i --config config.json -r results/myresults
 
 Ditto but enable the GUI (does not do much right now)
 
-mib-browser.exe -d -i --config config.json -r results/myresults --gui
+> mib-browser.exe -d -i --config config.json -r results/myresults --gui
 
 Get details on command line optiuons:
 
-mib-browser.exe -d -h
+> mib-browser.exe -d -h
