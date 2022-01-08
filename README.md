@@ -1,7 +1,10 @@
 # mib-browser
+
 A Simple MIB Browser to query SNMP values.
 
 Usage: mib-reader [options]
+
+```
 
 Options:
   -c, --community <name>       community (default: "public")
@@ -20,17 +23,19 @@ Options:
   -w, --walk                   Output the MIB tree at the specified OIDs
                                (default: false)
   -h, --help                   display help for command
-  
-  Examples:
-  
-  Gather some data based on the config file and generate results
-  
-  mib-browser.exe  -d -i --config config.json -r results/myresults 
-  
-  Ditto but enable the GUI (does not do much right now)
-  
-  mib-browser.exe  -d -i --config config.json -r results/myresults --gui
-  
-  Get details on command line optiuons:
-  
-  mib-browser.exe  -d -h
+
+```
+
+Examples:
+
+Gather some data based on the config file and generate results
+
+mib-browser.exe -d -i --config config.json -r results/myresults
+
+Ditto but enable the GUI (does not do much right now)
+
+mib-browser.exe -d -i --config config.json -r results/myresults --gui
+
+Get details on command line optiuons:
+
+mib-browser.exe -d -h
