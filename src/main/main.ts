@@ -263,7 +263,7 @@ class MIBReader {
   store: any;
 
   constructor(argv: string[]) {
-    // console.log('** starting app **');
+    console.log(`** starting app isPackaged=${app.isPackaged} **`);
     this.appVersion = '0.0.1';
     this.config = new MIBReaderConfig();
     this.entryMap = [];
